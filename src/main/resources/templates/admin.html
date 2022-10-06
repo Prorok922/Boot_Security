@@ -27,19 +27,32 @@
         </tr>
     </table>
 
+    <br>
+
     <form th:method="POST" th:action="@{/admin/new-user}" th:object="${newUser}">
-        <p>
-            <label for="username">Name</label>
-            <input type="text" th:field="*{username}" id="username" size="35">
-        </p>
-        <p>
-            <label for="password">Password</label>
-            <input type="text" th:field="*{password}" id="password" size="31">
-        </p>
-        <p>
-            <label for="email">Email</label>
-            <input type="text" th:field="*{email}" id="email" size="35">
-        </p>
+        <label class="row  justify-content-center" for="FirstNameNew">First Name</label>
+        <input  class="form-control" type="text" name="firstName" id="FirstNameNew">
+        <br>
+        <label class="row  justify-content-center" for="LastNameNew">Last Name</label>
+        <input  class="form-control" type="text" name="lastName" id="LastNameNew">
+        <br>
+        <label class="row  justify-content-center" for="AgeNew">Age</label>
+        <input  class="form-control" type="text" name="age" id="AgeNew">
+        <br>
+        <label class="row  justify-content-center" for="emailNew">Email</label>
+        <input  class="form-control" type="text" name="email" id="emailNew">
+        <br>
+        <label class="row  justify-content-center" for="passwordNew">Password</label>
+        <input  class="form-control" type="password" name="password" id="passwordNew">
+        <br>
+        <label class="row  justify-content-center" for="roleNew">Role</label>
+        <select class="form-control" size="2" id="roleNew" name="role">-->
+            <option>ADMIN</option>
+            <option>USER</option>
+        </select>
+
+
+
         <p><input type="submit" value="ADD USER"></p>
     </form>
 

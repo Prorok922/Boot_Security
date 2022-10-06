@@ -18,10 +18,9 @@ import ru.kata.spring.boot_security.demo.service.UserService;
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
-    private UserService userService;
+    private final UserService userService;
     private final PasswordEncoder passwordEncoder;
 
-    @Autowired
     public AdminController(PasswordEncoder passwordEncoder, UserService userService) {
         this.passwordEncoder = passwordEncoder;
         this.userService = userService;
@@ -36,9 +35,9 @@ public class AdminController {
 
 
     @PostMapping("/new-user")
-    public String createNewUser(@ModelAttribute("newUser") User newUser) {
+    public String createNewUser(@ModelAttribute("newUser") User newUser, @ModelAttribute("role") String role) {
         newUser.setPassword(passwordEncoder.encode(newUser.getPassword()));
-        userService.saveUser(newUser);
+        userService.saveUser(newUser, role);
         return "redirect:/admin/";
     }
 
@@ -50,8 +49,8 @@ public class AdminController {
     }
 
     @PatchMapping("/{id}")
-    public String update(@ModelAttribute("user") User user) {
-        userService.updateUser(user);
+    public String update(@ModelAttribute("user") User user, @ModelAttribute("role") String role) {
+        userService.updateUser(user, role);
         return "redirect:/admin/";
     }
 
